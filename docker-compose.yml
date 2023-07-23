@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  redis:
+    build:
+      context: /redis
+    ports:
+      - "6379:6379"
+    networks:
+      - redis-network
+  spring-app:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - redis-network
+networks:
+  redis-network:
