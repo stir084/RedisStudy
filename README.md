@@ -26,3 +26,4 @@ Redis에 1차적으로 조회 후 값이 없으면 DB 조회
 특징 1. 이용하지 않을 데이터도 캐시에 들어갈 수 있어서 상대적으로 느리며 메모리 낭비가 발생한다.
 특징 2. 값의 관리를 위해 expired Time 걸어야 한다.
 
+![image](https://github.com/stir084/RedisStudy/assets/47946124/17cc3ff1-1b30-4917-9d03-5184764baea2)
