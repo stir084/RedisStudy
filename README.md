@@ -26,7 +26,7 @@
 특징 1. 이용하지 않을 데이터도 캐시에 들어갈 수 있어서 상대적으로 느리며 메모리 낭비가 발생한다.
 특징 2. 값의 관리를 위해 expired Time 걸어야 한다.
 
-![image](https://github.com/stir084/RedisStudy/assets/47946124/17cc3ff1-1b30-4917-9d03-5184764baea2)
+![image](https://github.com/stir084/RedisStudy/assets/47946124/17cc3ff1-1b30-4917-9d03-5184764baea2)   
 
 # Redis 아키텍처
 
@@ -34,19 +34,19 @@
 마스터 노드에 대한 슬레이브 노드를 복제본으로 두어서 마스터 노드가 죽었을 경우 슬레이브 노드를 사용하고 싶을때 사용한다.
 
 ## Sentinel
-마스터 노드에 대한 슬레이브 노드들이 존재하고 Sentinal 노드가 마스터 노드가 비정상이라고 판단할 경우 페일오버(컴퓨터 서버, 시스템, 네트워크 등에서 이상이 생겼을 때 예비 시스템으로 자동전환되는 기능
-) 기능으로 인해 슬레이브 노드를 마스터 노드로 승격시켜 사용한다.
+마스터 노드에 대한 슬레이브 노드들이 존재하고 Sentinal 노드가 마스터 노드가 비정상이라고 판단할 경우 페일오버(컴퓨터 서버, 시스템, 네트워크 등에서 이상이 생겼을 때 예비 시스템으로 자동전환되는 기능   
+) 기능으로 인해 슬레이브 노드를 마스터 노드로 승격시켜 사용한다.   
 Sentinal 노드는 홀수로 운영되며 과반수가 찬성을 해야 슬레이브 노드를 마스터 노드로 승격시킨다.   
-이러한 기능으로 인해 고가용성 HA(High Availiablity) 기능을 보장할 수 있다.
+이러한 기능으로 인해 고가용성 HA(High Availiablity) 기능을 보장할 수 있다.   
 
 ## Cluster
-여러 마스터 노드에 데이터를 샤딩(데이터를 분산하여 여러 DB에 저장하는 기술)하여 가용성을 향상시키는 아키텍처다.
-하나의 마스터 노드가 죽을 경우 데이터가 유실되기 때문에 각각의 마스터 노드들은 데이터에 대한 복제본인 Replication을 같이 두어서 사용한다.
-Consistent Hashing 방법으로 데이터를 분산 저장한다.
+여러 마스터 노드에 데이터를 샤딩(데이터를 분산하여 여러 DB에 저장하는 기술)하여 가용성을 향상시키는 아키텍처다.   
+하나의 마스터 노드가 죽을 경우 데이터가 유실되기 때문에 각각의 마스터 노드들은 데이터에 대한 복제본인 Replication을 같이 두어서 사용한다.   
+Consistent Hashing 방법으로 데이터를 분산 저장한다.   
 
-![image](https://github.com/stir084/RedisStudy/assets/47946124/93499f34-6921-4c38-adc9-0819725865cc)
+![image](https://github.com/stir084/RedisStudy/assets/47946124/93499f34-6921-4c38-adc9-0819725865cc)   
 
 # 간단한 SQL을 대체하는 법
 
-![image](https://github.com/stir084/RedisStudy/assets/47946124/0d7dbe57-270a-49f1-8b7b-ac42a2c564a4)
+![image](https://github.com/stir084/RedisStudy/assets/47946124/0d7dbe57-270a-49f1-8b7b-ac42a2c564a4)   
 
