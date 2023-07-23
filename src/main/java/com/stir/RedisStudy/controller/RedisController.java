@@ -23,6 +23,19 @@ public class RedisController {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
+    @PostMapping("/login")
+    public ResponseEntity<?> login(HttpSession session){
+        UUID uid = Optional.ofNullable(UUID.class.cast(session.getAttribute("uid")))
+                .orElse(UUID.randomUUID());
+        session.setAttribute("uid", uid);
+        return new ResponseEntity<>("로그인 성공", HttpStatus.OK);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpSession session){
+        session.invalidate();
+        return new ResponseEntity<>("로그아웃 성공", HttpStatus.OK);
+    }
     @PostMapping("/data")
     public ResponseEntity<?> addRedisKey() {
         ValueOperations<String, String> vop = redisTemplate.opsForValue();
@@ -36,17 +49,5 @@ public class RedisController {
         String value = vop.get(key);
         return new ResponseEntity<>(value, HttpStatus.OK);
     }
-    @PostMapping("/login")
-    public ResponseEntity<?> login(HttpSession session){
-        UUID uid = Optional.ofNullable(UUID.class.cast(session.getAttribute("uid")))
-                .orElse(UUID.randomUUID());
-        session.setAttribute("uid", uid);
-        return new ResponseEntity<>("로그인 성공", HttpStatus.OK);
-    }
 
-    @GetMapping("/logout")
-    public ResponseEntity<?> logout(HttpSession session){
-        session.invalidate();
-        return new ResponseEntity<>("로그아웃 성공", HttpStatus.OK);
-    }
 }
