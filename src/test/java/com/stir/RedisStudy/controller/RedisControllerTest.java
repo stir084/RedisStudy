@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -18,6 +19,11 @@ public class RedisControllerTest {
     @Test
     public void testLoginEndpoint() throws Exception {
         mockMvc.perform(post("/login"))
+                .andExpect(status().isOk());
+    }
+    @Test
+    public void seeViewCount() throws Exception {
+        mockMvc.perform(get("/view-count"))
                 .andExpect(status().isOk());
     }
 }
